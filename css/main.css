@@ -1,0 +1,246 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: white;
+   font-family: "Montserrat Alternates", sans-serif;
+  overflow: hidden;
+}
+
+.main-heart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  transition: all 0.5s;
+}
+
+.click-prompt {
+  color: rgb(255, 0, 43);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  animation: textPulse 2s infinite;
+}
+
+.heart {
+  width: 60px;
+  height: 60px;
+  background-color: #ff0000;
+  transform: rotate(45deg);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.heart:before,
+.heart:after {
+  content: '';
+  width: 60px;
+  height: 60px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart:before {
+  top: -30px;
+  left: 0;
+}
+
+.heart:after {
+  top: 0;
+  left: -30px;
+}
+
+.heart:hover {
+  transform: rotate(45deg) scale(1.1);
+}
+
+@keyframes textPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.valentine-card {
+  max-width: 500px;
+  text-align: center;
+  padding: 30px;
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  transform: scale(0);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+  z-index: 5;
+}
+
+.valentine-card.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+h1 {
+  color: #ff0000;
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #999;
+}
+
+/* Стили для закрывающего сердечка */
+.close-heart {
+  width: 40px;
+  height: 40px;
+  background-color: #ff0000;
+  transform: rotate(45deg);
+  position: relative;
+  cursor: pointer;
+  margin: 20px auto 0;
+  transition: all 0.3s;
+}
+
+.close-heart:before,
+.close-heart:after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.close-heart:before {
+  top: -20px;
+  left: 0;
+}
+
+.close-heart:after {
+  top: 0;
+  left: -20px;
+}
+
+.close-heart:hover {
+  transform: rotate(45deg) scale(1.1);
+}
+
+/* Анимация летающих сердечек */
+.floating-heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ff4081;
+  transform: rotate(45deg);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+}
+
+.floating-heart:before,
+.floating-heart:after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: #ff4081;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.floating-heart:before {
+  top: -10px;
+  left: 0;
+}
+
+.floating-heart:after {
+  top: 0;
+  left: -10px;
+}
+
+/* Падающие сердечки */
+.falling-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 11111; /* Убедитесь, что сердечки позади основного контента */
+  overflow: hidden;
+}
+
+.falling-heart-bg {
+  position: absolute;
+  font-size: 20px;
+  color: rgba(255, 0, 43, 0.4);
+  animation: falling linear infinite;
+  user-select: none;
+}
+
+@keyframes falling {
+  0% {
+    transform: translateY(-10vh) translateX(10vw) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(110vh) translateX(-10vw) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .valentine-card {
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  .click-prompt {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-height: 600px) {
+  body {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+  
+  .valentine-card {
+    margin-top: 40px;
+  }
+}
